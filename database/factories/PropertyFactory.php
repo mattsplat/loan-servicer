@@ -8,6 +8,6 @@ $factory->define(App\Models\Property::class, function (Faker $faker) {
       "type" => 'Single Family',
       "address" => $faker->address,
       "value" => $value,
-      "tax" => $value * rand(8, 20)/10,
+      "tax" => $value * rand(8, 20)/1000, 
     ];
 });
