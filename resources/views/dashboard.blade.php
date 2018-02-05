@@ -179,7 +179,7 @@ desired effect
               <!-- The user image in the navbar-->
               <img src="http://simpleicon.com/wp-content/uploads/smile.png" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">{{$user->name}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
@@ -187,7 +187,7 @@ desired effect
                 <img src="http://simpleicon.com/wp-content/uploads/smile.png" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
+                  {{$user->name}}
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -237,7 +237,7 @@ desired effect
           <img src="http://simpleicon.com/wp-content/uploads/smile.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>{{$user->name}}</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
