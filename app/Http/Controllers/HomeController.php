@@ -35,6 +35,6 @@ class HomeController extends Controller
         $user = Auth::user();
 
 
-        return view('dashboard', compact('user'));
+        return view('partials.main', compact('user'));
     }
 }

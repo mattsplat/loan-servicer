@@ -9,20 +9,31 @@ class Customer extends Model
 
     public function loans(){
 
-      return hasMany('App\Models\Loan');
+      return $this->hasMany('App\Models\Loan');
 
     }
 
     public function properties(){
 
-      return hasManyThrough('App\Models\Property', 'App\Loan');
+      return $this->hasManyThrough('App\Models\Property', 'App\Loan');
 
     }
 
     public function lenders(){
 
-      return hasManyThrough('App\Models\Lender', 'App\Models\Loan');
+      return $this->hasManyThrough('App\Models\Lender', 'App\Models\Loan');
 
+    }
+
+    public function totalLoanAmount(){
+
+        $loans = $this->loans;
+        $total = 0;
+        foreach($loans as $loan){
+            $total += $loan->start_amount;
+        }
+
+        return $total;
     }
 
 }

@@ -4,9 +4,9 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>A</b>LT</span>
+        <span class="logo-mini"><b>L</b>S</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Admin</b>LTE</span>
+        <span class="logo-lg"><b>Loan</b>Servicer</span>
     </a>
 
     <!-- Header Navbar -->
@@ -121,7 +121,7 @@
                         <!-- The user image in the navbar-->
                         <img src="http://simpleicon.com/wp-content/uploads/smile.png" class="user-image" alt="User Image">
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs"> {{Auth::user()->name}}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
@@ -129,7 +129,7 @@
                             <img src="http://simpleicon.com/wp-content/uploads/smile.png" class="img-circle" alt="User Image">
 
                             <p>
-                                {{Auth::user()->first_name}}
+                                {{Auth::user()->name}}
                                 <small>Member since Nov. 2012</small>
                             </p>
                         </li>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
@@ -15,7 +16,11 @@ class CustomerController extends Controller
     public function index()
     {
 
-        return Customer::all();
+        $customers = Customer::with('loans')->get();
+        $user = Auth::user();
+
+
+        return view('customers.index', compact('customers', 'user'));
     }
 
     /**
