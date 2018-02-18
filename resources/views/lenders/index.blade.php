@@ -3,7 +3,7 @@
 @section('heading')
     <section class="content-header">
         <h1>
-            Customers
+            Lenders
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -22,25 +22,17 @@
                         <thead>
                         <tr>
                             <th class="text-center">Name</th>
-                            <th class="text-center">Phone</th>
-                            <th class="text-center">SSN</th>
-                            <th class="text-center">Loan Total</th>
-
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($customers as $customer)
-                            <tr class="customer-row" data-id="{{ $customer->id }}">
-                                <td class="text-center">{{ $customer->first_name .' '. $customer->last_name }}</td>
-                                <td class="text-center">{{ $customer->phone }}</td>
-                                <td class="text-center">{{ 'XXX-XX-'.substr($customer->ssn, -4) }}</td>
-                                <td class="text-right" >{{ money_format('$ %i' ,$customer->totalLoanAmount()) }}</td>
-
+                        @foreach($lenders as $lender)
+                            <tr class="customer-row" data-id="{{ $lender->id }}">
+                                <td class="text-center">{{ $lender->name }}</td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-                    <p>Total: {{count($customers)}}</p>
+                    <p>Total: {{count($lenders)}}</p>
                 </div>
             </div>
         </div>
@@ -56,7 +48,7 @@
         $(document).ready(function() {
             $(".customer-row").click(function() {
                 var id = $(this).data("id");
-                window.location = '/customers/'+ id;
+                window.location = '/lenders/'+ id;
             });
         });
     </script>

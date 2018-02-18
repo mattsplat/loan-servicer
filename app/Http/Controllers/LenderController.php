@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Lender;
+use App\Models\Lender;
 use Illuminate\Http\Request;
 
 class LenderController extends Controller
@@ -14,7 +14,8 @@ class LenderController extends Controller
      */
     public function index()
     {
-        //
+        $lenders = Lender::all();
+        return view('lenders.index', compact('lenders'));
     }
 
     /**
@@ -46,7 +47,8 @@ class LenderController extends Controller
      */
     public function show(Lender $lender)
     {
-        //
+        $lenders = Lender::all();
+        return view('lenders.show', compact('lenders'));
     }
 
     /**

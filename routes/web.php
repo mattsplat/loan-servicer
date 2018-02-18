@@ -35,6 +35,9 @@ resource creates the folowing routes
 
 */
 
+//Route::get('/customers', 'CustomerController@index');
+//Route::get('/customers/{customer}', 'CustomerController@show');
+
 Route::resources([
     'loans' => 'LoanController',
     'customers' => 'CustomerController',
