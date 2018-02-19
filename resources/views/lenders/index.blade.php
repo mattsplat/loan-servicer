@@ -19,15 +19,18 @@
             <div class="box table-container">
                 <div class="box-body table-responsive">
                     <table id="customer-table" class="table table-bordered table-hover">
-                        <thead>
+                        <thead class="thead-dark">
                         <tr>
                             <th class="text-center">Name</th>
+                            <th class="text-center"># of Loans</th>
+
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($lenders as $lender)
                             <tr class="customer-row" data-id="{{ $lender->id }}">
                                 <td class="text-center">{{ $lender->name }}</td>
+                                <td class="text-center"><span class="badge">{{$lender->loans->count()}}</span></td>
                             </tr>
                         @endforeach
                         </tbody>
