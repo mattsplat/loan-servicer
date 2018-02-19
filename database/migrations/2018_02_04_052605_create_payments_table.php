@@ -17,9 +17,15 @@ class CreatePaymentsTable extends Migration
             $table->increments('id');
             $table->integer('amount');
             $table->string('method');
-            $table->date('due_date');
+            $table->date('date');
             $table->integer('loan_id')->unsigned()->index();
             $table->integer('customer_id')->unsigned()->index();
+            $table->integer('principal');
+            $table->integer('interest');
+            $table->integer('tax');
+            $table->integer('insurance');
+            $table->integer('fee')->default(0);
+            $table->integer('balance');
             $table->timestamps();
         });
     }

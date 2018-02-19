@@ -53,14 +53,8 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        //dd($customer->with('loans')->get());
 
-
-        $customers = Customer::with('loans')->get();
-        $user = Auth::user();
-        setlocale(LC_MONETARY, 'en_US');
-
-        return view('customers.show', compact('customers'));
+        return view('customers.show', compact('customer'));
     }
 
     /**
@@ -71,11 +65,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //$customers = Customer::with('loans')->get();
-        $user = Auth::user();
-        //setlocale(LC_MONETARY, 'en_US');
-
-        return view('customers.edit', compact('customer', 'user'));
+        //return view('customers.show', compact('customer'));
     }
 
     /**

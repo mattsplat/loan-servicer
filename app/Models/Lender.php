@@ -8,13 +8,13 @@ class Lender extends Model
 {
     public function loans(){
 
-      return hasMany('App\Models\Loan');
+      return $this->hasMany('App\Models\Loan');
 
     }
 
     public function customers(){
 
-      return hasManyThrough('App\Models\Customer', 'App\Models\Loan');
+      return $this->hasManyThrough('App\Models\Customer', 'App\Models\Loan');
 
     }
 

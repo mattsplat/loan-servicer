@@ -8,7 +8,7 @@ class Insurance extends Model
 {
   
     public function loans(){
-            return belongsTo('App\Models\Property');
+            return $this->belongsTo('App\Models\Property');
     }
 
 }

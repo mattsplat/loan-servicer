@@ -7,7 +7,7 @@ $factory->define(App\Models\Insurance::class, function (Faker $faker) {
     return [
       'company' => $faker->company,
       'policy_number' => $faker->ssn,
-      'cost' => round(($property->value * rand(5, 15) )/1000, 2),
+      'cost' => round(($property->value * rand(3, 12) )/1000, 2),
       'property_id' => $property->id
     ];
 });

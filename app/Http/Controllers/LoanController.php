@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Loan;
+use App\Models\Loan;
 use Illuminate\Http\Request;
 
 class LoanController extends Controller
@@ -14,7 +14,8 @@ class LoanController extends Controller
      */
     public function index()
     {
-        //
+        $loans = Loan::all();
+        return view('loans.index', compact('loans'));
     }
 
     /**
@@ -46,7 +47,8 @@ class LoanController extends Controller
      */
     public function show(Loan $loan)
     {
-        //
+
+        return view('loans.show', compact('loan'));
     }
 
     /**
@@ -81,5 +83,11 @@ class LoanController extends Controller
     public function destroy(Loan $loan)
     {
         //
+    }
+
+    public function allPayments(Loan $loan){
+
+        return view('loans.payments', compact('loan'));
+
     }
 }
