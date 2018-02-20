@@ -18,7 +18,8 @@ class CreatePropertiesTable extends Migration
             $table->string('type');
             $table->string('address');
             $table->integer('value');
-            $table->integer('tax');            
+            $table->integer('tax');
+            $table->integer('year_built')->nullable();
             $table->timestamps();
         });
     }

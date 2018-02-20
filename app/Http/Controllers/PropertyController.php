@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Property;
+use App\Models\Property;
 use Illuminate\Http\Request;
 
 class PropertyController extends Controller
@@ -14,7 +14,9 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        //
+        $properties = Property::all();
+
+        return view('properties.index', compact('properties'));
     }
 
     /**
@@ -46,7 +48,7 @@ class PropertyController extends Controller
      */
     public function show(Property $property)
     {
-        //
+        return view('properties.show', compact('property'));
     }
 
     /**
@@ -81,5 +83,10 @@ class PropertyController extends Controller
     public function destroy(Property $property)
     {
         //
+    }
+
+    public function propertyLoans(Property $property){
+        $loans = $property->loans;
+        return view('loans.index', compact('loans'));
     }
 }

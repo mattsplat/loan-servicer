@@ -14,7 +14,7 @@ class InsuranceController extends Controller
      */
     public function index()
     {
-        //
+        return view('insurance.index');
     }
 
     /**

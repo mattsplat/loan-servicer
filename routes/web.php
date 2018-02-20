@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@dashboard');
 
 Route::get('/loans/{loan}/payments', 'LoanController@allPayments');
+Route::get('/properties/{property}/loans', 'PropertyController@propertyLoans');
+
 
 
 /*
@@ -45,4 +47,6 @@ Route::resources([
     'customers' => 'CustomerController',
     'lenders' => 'LenderController',
     'properties' => 'PropertyController',
+    'insurance' => 'InsuranceController',
+    'payments' => 'PaymentController',
   ] );

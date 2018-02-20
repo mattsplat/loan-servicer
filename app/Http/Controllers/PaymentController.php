@@ -14,7 +14,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        return view('payments.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        //
+        return view('payments.create', compact('loans'));
     }
 
     /**
