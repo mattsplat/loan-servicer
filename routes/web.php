@@ -50,3 +50,7 @@ Route::resources([
     'insurance' => 'InsuranceController',
     'payments' => 'PaymentController',
   ] );
+
+Route::get('client', function(){
+    return view('client.partials.main');
+});
