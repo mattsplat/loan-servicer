@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Loan extends Model
@@ -34,7 +35,7 @@ class Loan extends Model
   // insurances
   public function insurance(){
 
-    return $this->hasManyThrough('App\Models\Insurance', 'App\Models\Property');
+    return $this->hasManyThrough('App\Models\Insurance', 'App\Models\Property', 'id', 'property_id', 'property_id', 'id');
 
   }
 
@@ -64,7 +65,7 @@ class Loan extends Model
       $principal = $this->monthlyMortgage();
 
 
-      $insurance = $this->property->insurance->cost / 12;
+      $insurance = $this->property->insurance->sum('cost') / 12;
 
       $tax = $this->property->tax / 12;
       
@@ -75,5 +76,21 @@ class Loan extends Model
 
       return Carbon::now()->diffForHumans($this->start_date, true);
 
+  }
+
+  public function getMonthlyMortgageAttribute()
+  {
+      return round($this->monthlyMortgage(), 2);
+  }
+
+  public function getMonthlyPaymentAttribute()
+  {
+      return round($this->monthlyPayment(), 2);
+  }
+
+
+  public function scopeBalanceOver(Builder $query, int $amount)
+  {
+      return $query->where('balance', '>', $amount);
   }
 }

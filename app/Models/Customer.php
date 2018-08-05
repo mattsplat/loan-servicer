@@ -15,13 +15,13 @@ class Customer extends Model
 
     public function properties(){
 
-      return $this->hasManyThrough('App\Models\Property', 'App\Loan');
+      return $this->belongsToMany('App\Models\Property', 'loans');
 
     }
 
     public function lenders(){
 
-      return $this->hasManyThrough('App\Models\Lender', 'App\Models\Loan');
+      return $this->belongsToMany('App\Models\Lender', 'loans');
 
     }
 

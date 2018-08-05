@@ -14,7 +14,7 @@ class Lender extends Model
 
     public function customers(){
 
-      return $this->hasManyThrough('App\Models\Customer', 'App\Models\Loan');
+      return $this->belongsToMany('App\Models\Customer', 'loans');
 
     }
 

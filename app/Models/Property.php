@@ -16,21 +16,21 @@ class Property extends Model
     // customer
     public function customers(){
 
-      return $this->hasManyThrough('App\Models\Customer', 'App\Models\Loan');
+      return $this->belongsToMany('App\Models\Customer', 'loans');
 
     }
 
     // lenders
     public function lenders(){
 
-      return $this->hasManyThrough('App\Models\Lender', 'App\Models\Loan');
+      return $this->belongsToMany('App\Models\Lender', 'loans');
 
     }
     
     // insurances
     public function insurance(){
 
-      return $this->hasOne('App\Models\Insurance');
+      return $this->hasMany('App\Models\Insurance');
     }
 
     // payments
