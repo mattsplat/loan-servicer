@@ -26,18 +26,17 @@ class DatabaseSeeder extends Seeder
         foreach($customers as $customer){
 
           // create property for user
-          $property = factory('App\Models\Property', [
-            'customer_id' => $customer->id
-            ])->create()->first();
+          $property = factory('App\Models\Property')->create();
 
           // create loan for property connected to user
-          $loan = factory('App\Models\Loan', [
-            'property_id' => $property->id,
-            'customer_id' => $customer->id
-          ])->create()->first();
+          $loan = factory('App\Models\Loan')->create([
+              'property_id' => $property->id,
+              'customer_id' => $customer->id
+          ]);
 
           // create insurance on property
             $cost = round(($property->value * rand(5, 15) )/1000, 2);
+
 
             $insurance = App\Models\Insurance::create([
                 'property_id' => $property->id,
@@ -54,8 +53,8 @@ class DatabaseSeeder extends Seeder
                 $monthly_interest = ($loan->rate/1200);
                 $interest = $loan->balance * $monthly_interest ;
                 $tax = $loan->property->tax/12;
-                $ins = $loan->property->insurance->cost/12;
-                if(round($payment) != round($loan->monthlyMortgage()+$tax+$ins) ){
+                $ins = $cost/12;
+                if(round($payment,2) != round($loan->monthlyMortgage()+$tax+$ins, 2) ){
                     $this->command->info('Payment of '. $payment .' != '. ($loan->monthlyMortgage()+$tax+$ins));
                 }
                 $principal = $payment - ($interest+$tax+$ins);
@@ -75,10 +74,18 @@ class DatabaseSeeder extends Seeder
 
                 //adjust balance
                 $loan->balance = $loan->balance - $principal;
+                if($loan->balance < 0){
+                    $loan->balance = 0;
+                    $loan->save();
+                    break;
+                }
                 $loan->save();
             }
 
         }
 
+        $this->call([
+            AddUserRolesSeeder::class,
+        ]);
     }
 }

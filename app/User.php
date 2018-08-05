@@ -35,7 +35,7 @@ class User extends Authenticatable
     ];
 
 
-    public function attachToRole(Model $role)
+    public function attachRole(Model $role)
     {
 
         $rollable_type = get_class($role);
@@ -52,8 +52,23 @@ class User extends Authenticatable
 
     }
 
+    public function detatchRole(Model $role)
+    {
+        return  Role::where([
+            'user_id' => $this->id,
+            'roleable_id' => $role->id,
+            'roleable_type' => get_class($role)
+        ])->delete();
+
+    }
+
     public function roles()
     {
-        return $this->hasMany('App\Models\Role');
+        $roles = Role::where('user_id', $this->id )->get();
+
+        return $roles->map(function($role){
+            return ($role->roleable_type::find($role->roleable_id));
+        });
+
     }
 }
