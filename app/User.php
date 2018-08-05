@@ -54,6 +54,6 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->hasMany('App\Models\Roles');
+        return $this->hasMany('App\Models\Role');
     }
 }

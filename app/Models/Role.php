@@ -13,4 +13,10 @@ class Role extends Model
         'Customer',
         'Admin',
     ];
+
+    public function roleable()
+    {
+        return $this->morphTo();
+    }
+
 }
