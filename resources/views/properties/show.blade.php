@@ -28,7 +28,7 @@
 
                     <p><strong># of Active Loans: </strong> <a href="/properties/{{$property->id}}/loans">{{$property->loans->count()}}</a></p>
                     <p><strong>Total Loan Balance:</strong> {{$property->loans->sum('balance')}}</p>
-                    <p><strong>Insurance:</strong> {{$property->insurance->cost}}</p>
+                    <p><strong>Insurance:</strong> {{$property->insurance->sum('cost') ?? 0}}</p>
                     <p><strong>Total Loan Balance:</strong> {{$property->loans->sum('balance')}}</p>
 
                     <p><strong>Yearly Taxes:</strong> {{ money_format('$ %i', $property->tax) }}</p>

@@ -37,7 +37,7 @@
                         <tbody>
                         @foreach($loan->payments as $payment)
                             <tr class="customer-row" data-id="{{ $payment->id }}">
-                                <td class="text-center">{{ $payment->date }}</td>
+                                <td class="text-center">{{ $payment->date->format('m/d/Y') }}</td>
                                 <td class="text-center">{{ money_format('$ %i',$payment->amount )}}</td>
                                 <td class="text-center">{{ money_format('$ %i',$payment->interest) }}</td>
                                 <td class="text-center">{{ money_format('$ %i',$payment->principal) }}</td>

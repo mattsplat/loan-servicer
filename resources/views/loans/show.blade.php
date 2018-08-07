@@ -28,8 +28,8 @@
                     <p><strong>Property Value:</strong> {{ money_format('$ %i',$loan->property->value) }}</p>
                     <p><strong>Current Balance:</strong> {{ money_format('$ %i',$loan->balance ) }}</p>
                     <p><strong>Current LTV:</strong> {{round(($loan->balance / $loan->property->value)*100, 2)}}%</p>
-                    <p><strong>Insurance Company:</strong> {{$loan->property->insurance->company}}</p>
-                    <p><strong>Insurance Premium:</strong> {{ money_format('$ %i',$loan->property->insurance->cost) }}</p>
+                    <p><strong>Insurance Company:</strong> {{$loan->insurance->first()->company}}</p>
+                    <p><strong>Insurance Premium:</strong> {{ money_format('$ %i',$loan->property->insurance->sum('cost')) }}</p>
                     <p><strong>Yearly Taxes:</strong> {{ money_format('$ %i', $loan->property->tax) }}</p>
                     <br>
                     <p><strong>Age of Loan:</strong> {{$loan->age()}}</p>

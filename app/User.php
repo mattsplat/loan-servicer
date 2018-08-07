@@ -71,4 +71,10 @@ class User extends Authenticatable
         });
 
     }
+
+    public function lenders()
+    {
+        return $this->morphedByMany('App\Models\Lender', 'roles');
+    }
+
 }

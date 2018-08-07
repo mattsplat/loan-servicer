@@ -16,7 +16,7 @@ class Role extends Model
 
     public function roleable()
     {
-        return $this->morphTo();
+        return $this->morphTo('roleable', '');
     }
 
 }
